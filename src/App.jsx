@@ -25,9 +25,9 @@ const App = () => {
   };
 
   // 가이드라인을 완벽 준수한 로고 컴포넌트 (색상 강제 고정)
-  const Logo = ({ className = "", height = "32px", style = {} }) => (
+  const Logo = ({ className = "", height = "22px", style = {} }) => (
     <img 
-      src="/logo.png" 
+      src="/FitJob2.png" 
       alt="FITJOB" 
       className={`cursor-pointer ${className}`}
       style={{ height, width: 'auto', ...style }}
