@@ -25,14 +25,14 @@ const App = () => {
   };
 
   // 가이드라인을 완벽 준수한 로고 컴포넌트 (색상 강제 고정)
-  const Logo = ({ className = "" }) => (
-    <div 
-      className={`flex items-center font-pretendard font-bold text-[28px] tracking-[-0.01em] cursor-pointer ${className}`} 
+  const Logo = ({ className = "", height = "32px", style = {} }) => (
+    <img 
+      src="/logo.png" 
+      alt="FITJOB" 
+      className={`cursor-pointer ${className}`}
+      style={{ height, width: 'auto', ...style }}
       onClick={() => window.location.href = 'https://fitjob.co.kr/'}
-    >
-      <span style={{ color: '#5C5FED' }}>FIT</span>
-      <span style={{ color: '#1E1B4B' }}>JOB</span>
-    </div>
+    />
   );
 
   return (
