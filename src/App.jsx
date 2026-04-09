@@ -316,8 +316,8 @@ const App = () => {
         <div className="max-w-4xl mx-auto flex flex-col items-center gap-6">
           <Logo className="opacity-80 grayscale" />
           <p className="text-slate-400 text-sm text-center">
-            &copy; 2024 핏잡. All rights reserved.<br/>
-            운용 업계 채용 문화를 혁신하는 피트니스 잡 매칭 서비스
+            &copy; 2026 핏잡. All rights reserved.<br/>
+            운동 업계 채용 문화를 혁신하는 피트니스 잡 매칭 서비스
           </p>
         </div>
       </footer>
