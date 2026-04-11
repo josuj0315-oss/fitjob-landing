@@ -12,16 +12,20 @@ import {
   Clock
 } from 'lucide-react';
 
+import Section6Image from './assets/이미지.png';
+
 const App = () => {
   const [activeTab, setActiveTab] = useState('instructor');
+  const [showModal, setShowModal] = useState(false);
 
   // CTA 핸들러
   const handleJobBrowse = () => {
     window.location.href = 'https://fitjob.co.kr/';
   };
 
-  const handlePostJob = () => {
-    window.location.href = 'https://fitjob.co.kr/write';
+  const handleComingSoon = () => {
+    setShowModal(true);
+    setTimeout(() => setShowModal(false), 3000);
   };
 
   // 가이드라인을 완벽 준수한 로고 컴포넌트 (색상 강제 고정)
@@ -36,7 +40,25 @@ const App = () => {
   );
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-pretendard selection:bg-brand-light">
+    <div className="min-h-screen bg-white text-slate-900 font-pretendard selection:bg-brand-light relative">
+      {/* Modal / Toast */}
+      {showModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center px-6">
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setShowModal(false)}></div>
+          <div className="bg-white rounded-3xl p-8 shadow-2xl relative z-10 max-w-sm w-full text-center animate-in fade-in zoom-in duration-300">
+            <div className="text-4xl mb-4">🚀</div>
+            <h3 className="text-xl font-bold mb-2">핏잡 앱이 곧 출시됩니다!</h3>
+            <p className="text-slate-600">조금만 기다려주세요 🙏</p>
+            <button 
+              onClick={() => setShowModal(false)}
+              className="mt-6 w-full py-3 bg-[#5C5FED] text-white rounded-xl font-bold"
+            >
+              확인
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* 1. Header (Minimal) */}
       <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-center sm:justify-between">
@@ -72,12 +94,6 @@ const App = () => {
               지금 공고 보러가기
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
-            <button 
-              onClick={handlePostJob}
-              className="px-8 py-4 bg-white border-2 border-slate-200 text-slate-700 rounded-2xl font-bold text-lg hover:bg-slate-50 transition-all flex items-center justify-center gap-2"
-            >
-              무료로 공고 등록하기
-            </button>
           </div>
         </div>
       </section>
@@ -107,13 +123,13 @@ const App = () => {
           <div className="space-y-4">
             {activeTab === 'instructor' ? (
               <>
-                <div className="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex gap-4 items-start">
+                <div className="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex gap-4 items-center">
                   <div className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center shrink-0">
                     <span className="text-red-500 font-bold">Q</span>
                   </div>
                   <p className="text-slate-700 font-medium">"여러 채용사이트 돌아다니면서 지원하는 게 너무 번거로워요."</p>
                 </div>
-                <div className="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex gap-4 items-start">
+                <div className="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex gap-4 items-center">
                   <div className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center shrink-0">
                     <span className="text-red-500 font-bold">Q</span>
                   </div>
@@ -122,13 +138,13 @@ const App = () => {
               </>
             ) : (
               <>
-                <div className="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex gap-4 items-start">
+                <div className="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex gap-4 items-center">
                   <div className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center shrink-0">
                     <span className="text-red-500 font-bold">Q</span>
                   </div>
                   <p className="text-slate-700 font-medium">"공고 작성이 번거롭고 매번 비슷한 내용을 반복 입력해야 해요."</p>
                 </div>
-                <div className="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex gap-4 items-start">
+                <div className="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex gap-4 items-center">
                   <div className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center shrink-0">
                     <span className="text-red-500 font-bold">Q</span>
                   </div>
@@ -204,7 +220,7 @@ const App = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
             {[
-              { icon: <Search/>, title: "조건 선택", desc: "지역, 시간, 급여 선택" },
+              { icon: <Search/>, title: "조건 선택", desc: "지역, 시간, 직군, 근무형태 선택" },
               { icon: <Building2/>, title: "공고 확인", desc: "검증된 센터 정보 탐색" },
               { icon: <CheckCircle2/>, title: "바로 지원", desc: "프로필 하나로 지원 끝" },
               { icon: <MessageSquare/>, title: "채팅 연결", desc: "센터장과 직접 소통" }
@@ -215,9 +231,6 @@ const App = () => {
                 </div>
                 <h4 className="font-bold mb-2">{step.title}</h4>
                 <p className="text-xs text-slate-400">{step.desc}</p>
-                {idx < 3 && (
-                  <div className="hidden md:block absolute top-14 left-full w-full h-[2px] bg-gradient-to-r from-[#5C5FED]/50 to-transparent -ml-8"></div>
-                )}
               </div>
             ))}
           </div>
@@ -232,8 +245,8 @@ const App = () => {
               센터 전용 기능
             </div>
             <h2 className="text-3xl font-bold mb-6 tracking-tight">
-              공고 등록, <br/> 
-              <span style={{ color: '#5C5FED' }}>60초면 충분합니다.</span>
+              공고등록, <br/> 
+              <span style={{ color: '#5C5FED' }}>AI자동채우기로 등록해보세요!</span>
             </h2>
             <ul className="space-y-4">
               <li className="flex gap-3 items-center text-slate-600 font-medium">
@@ -249,64 +262,55 @@ const App = () => {
                 지원 알림으로 놓치지 않는 인재 영입
               </li>
             </ul>
-            <button 
-              onClick={handlePostJob}
-              style={{ border: '2px solid #5C5FED', color: '#5C5FED' }}
-              className="mt-10 px-6 py-3 rounded-xl font-bold hover:bg-[#5C5FED] hover:text-white transition-all flex items-center gap-2"
-            >
-              지금 공고 무료로 올리기
-              <ChevronRight className="w-4 h-4" />
-            </button>
           </div>
           <div className="bg-slate-100 rounded-[2.5rem] p-8 aspect-square flex items-center justify-center relative">
-            <div className="w-full h-full bg-white rounded-2xl shadow-2xl p-6 flex flex-col gap-4 border border-slate-200 animate-pulse">
-               <div className="h-6 w-1/3 bg-slate-200 rounded"></div>
-               <div className="h-4 w-full bg-slate-100 rounded"></div>
-               <div className="h-4 w-5/6 bg-slate-100 rounded"></div>
-               <div 
-                 className="mt-auto h-12 w-full rounded-xl border border-[#5C5FED]/30 flex items-center justify-center font-bold text-sm"
-                 style={{ backgroundColor: '#EEF0FF', color: '#5C5FED' }}
-               >
-                 공고 등록 완료
-               </div>
-            </div>
+            <img 
+              src={Section6Image} 
+              alt="공고 등록 프로세스" 
+              className="w-full h-auto rounded-2xl shadow-2xl relative z-10"
+            />
             {/* Decoration */}
             <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#5C5FED]/10 rounded-full blur-3xl"></div>
           </div>
         </div>
       </section>
 
-      {/* 7. Final CTA */}
+      {/* 7. Final CTA - App Coming Soon */}
       <section className="py-24 px-6">
         <div 
-          className="max-w-3xl mx-auto rounded-[3rem] p-12 text-center text-white relative overflow-hidden shadow-2xl"
+          className="max-w-4xl mx-auto rounded-[3rem] p-8 md:p-16 text-center text-white relative overflow-hidden shadow-2xl"
           style={{ backgroundColor: '#5C5FED' }}
         >
-          {/* Background circles */}
+          {/* Background decoration */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32"></div>
           <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/10 rounded-full -ml-24 -mb-24"></div>
 
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-6 relative z-10">
-            지금 바로 핏잡에서<br/>새로운 시작을 하세요.
-          </h2>
-          <p className="text-blue-100 mb-10 relative z-10 opacity-90">
-            벌써 수많은 센터와 강사님이 <br className="md:hidden"/> 핏잡을 통해 연결되고 있습니다.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
-            <button 
-              onClick={handleJobBrowse}
-              className="px-8 py-4 bg-white text-brand rounded-2xl font-bold text-lg hover:shadow-xl transition-all"
-              style={{ color: '#5C5FED' }}
-            >
-              공고 보러가기
-            </button>
-            <button 
-              onClick={handlePostJob}
-              className="px-8 py-4 bg-black/20 text-white rounded-2xl font-bold text-lg hover:bg-black/30 transition-all border border-white/20"
-            >
-              공고 등록하기
-            </button>
+          <div className="relative z-10">
+            <h2 className="text-3xl md:text-5xl font-extrabold mb-6 leading-tight break-keep">
+              핏잡 앱, 곧 출시됩니다<br/>
+              <span className="text-blue-200">더 빠르고 간편한 매칭을 준비 중이에요</span>
+            </h2>
+            <p className="text-lg md:text-xl text-blue-100 mb-12 opacity-90 max-w-2xl mx-auto break-keep">
+              센터와 강사를 연결하는 모든 과정을<br className="md:hidden"/> 이제 앱 하나로 해결하세요.
+            </p>
+            
+            <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-6 md:p-8 inline-block w-full max-w-xl border border-white/20">
+              <p className="text-xl font-bold mb-6 break-keep">앱 출시를 준비 중입니다<br/>조금만 기다려주세요 🙌</p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button 
+                  onClick={handleComingSoon}
+                  className="flex-1 px-4 py-4 bg-white text-slate-900 rounded-2xl font-bold text-base md:text-lg hover:bg-slate-50 transition-all flex items-center justify-center gap-2 shadow-lg whitespace-nowrap"
+                >
+                  <span className="text-xl md:text-2xl">🍎</span> iOS 출시 예정
+                </button>
+                <button 
+                  onClick={handleComingSoon}
+                  className="flex-1 px-4 py-4 bg-slate-900 text-white rounded-2xl font-bold text-base md:text-lg hover:bg-slate-800 transition-all flex items-center justify-center gap-2 shadow-lg whitespace-nowrap"
+                >
+                  <span className="text-xl md:text-2xl">🤖</span> Android 출시 예정
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
