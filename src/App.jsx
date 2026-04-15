@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { 
-  ChevronRight, 
-  MapPin, 
-  MessageSquare, 
-  Zap, 
-  CheckCircle2, 
-  Search, 
+import {
+  ChevronRight,
+  MapPin,
+  MessageSquare,
+  Zap,
+  CheckCircle2,
+  Search,
   ArrowRight,
   Users,
   Building2,
@@ -30,9 +30,9 @@ const App = () => {
 
   // 가이드라인을 완벽 준수한 로고 컴포넌트 (색상 강제 고정)
   const Logo = ({ className = "", height = "22px", style = {} }) => (
-    <img 
-      src="/FitJob2.png" 
-      alt="FITJOB" 
+    <img
+      src="/FitJob2.png"
+      alt="FITJOB"
       className={`cursor-pointer ${className}`}
       style={{ height, width: 'auto', ...style }}
       onClick={() => window.location.href = 'https://fitjob.co.kr/'}
@@ -49,7 +49,7 @@ const App = () => {
             <div className="text-4xl mb-4">🚀</div>
             <h3 className="text-xl font-bold mb-2">핏잡 앱이 곧 출시됩니다!</h3>
             <p className="text-slate-600">조금만 기다려주세요 🙏</p>
-            <button 
+            <button
               onClick={() => setShowModal(false)}
               className="mt-6 w-full py-3 bg-[#5C5FED] text-white rounded-xl font-bold"
             >
@@ -77,16 +77,16 @@ const App = () => {
             필라테스 · 피트니스 간편 채용 플랫폼
           </div>
           <h1 className="text-4xl md:text-5xl font-extrabold leading-[1.2] mb-6 tracking-tight">
-            운동 업계, 이제는 <br/>
-            <span style={{ color: '#5C5FED' }}>핏잡</span>에서 연결하세요
+            운동 업계, 이제는 <br />
+            <span style={{ color: '#5C5FED' }}>핏잡</span>에서 빠르게 채용하세요
           </h1>
           <p className="text-lg text-slate-600 mb-10 leading-relaxed">
-            강사도, 센터도 가장 빠르게 만나는 방법<br className="hidden md:block"/>
+            강사도, 센터도 가장 빠르게 만나는 방법<br />
             복잡한 절차 없이 오늘 바로 딱 맞는 파트너를 찾으세요.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button 
+            <button
               onClick={handleJobBrowse}
               style={{ backgroundColor: '#5C5FED' }}
               className="px-8 py-4 text-white rounded-2xl font-bold text-lg hover:brightness-110 transition-all shadow-lg shadow-[#5C5FED]/20 flex items-center justify-center gap-2 group"
@@ -102,16 +102,16 @@ const App = () => {
       <section className="py-20 bg-slate-50 px-6">
         <div className="max-w-xl mx-auto">
           <h2 className="text-center text-2xl md:text-3xl font-bold mb-12">혹시 이런 고민 중이신가요?</h2>
-          
+
           <div className="flex p-1 bg-slate-200 rounded-xl mb-8">
-            <button 
+            <button
               onClick={() => setActiveTab('instructor')}
               className={`flex-1 py-3 rounded-lg font-bold transition-all ${activeTab === 'instructor' ? 'bg-white shadow-sm' : 'text-slate-500'}`}
               style={activeTab === 'instructor' ? { color: '#5C5FED' } : {}}
             >
               강사님
             </button>
-            <button 
+            <button
               onClick={() => setActiveTab('center')}
               className={`flex-1 py-3 rounded-lg font-bold transition-all ${activeTab === 'center' ? 'bg-white shadow-sm' : 'text-slate-500'}`}
               style={activeTab === 'center' ? { color: '#5C5FED' } : {}}
@@ -167,7 +167,7 @@ const App = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* 솔루션 1: 한 번에 지원 */}
             <div className="group p-8 rounded-3xl bg-white border border-slate-100 shadow-xl shadow-slate-100/50 hover:-translate-y-2 transition-all duration-300">
-              <div 
+              <div
                 className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3"
                 style={{ backgroundColor: '#EEF0FF' }}
               >
@@ -175,13 +175,13 @@ const App = () => {
               </div>
               <h3 className="text-xl font-bold mb-3">한 번에 지원, 빠르게 끝내기</h3>
               <p className="text-slate-500 leading-relaxed text-sm">
-                여러 사이트 돌아다닐 필요 없이<br/>한 곳에서 바로 지원하고 관리하세요.
+                여러 사이트 돌아다닐 필요 없이<br />한 곳에서 바로 지원하고 관리하세요.
               </p>
             </div>
 
             {/* 솔루션 2: 맞춤형 필터링 */}
             <div className="group p-8 rounded-3xl bg-white border border-slate-100 shadow-xl shadow-slate-100/50 hover:-translate-y-2 transition-all duration-300">
-              <div 
+              <div
                 className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3"
                 style={{ backgroundColor: '#EEF0FF' }}
               >
@@ -195,7 +195,7 @@ const App = () => {
 
             {/* 솔루션 3: 실시간 채팅 */}
             <div className="group p-8 rounded-3xl bg-white border border-slate-100 shadow-xl shadow-slate-100/50 hover:-translate-y-2 transition-all duration-300">
-              <div 
+              <div
                 className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3"
                 style={{ backgroundColor: '#EEF0FF' }}
               >
@@ -220,10 +220,10 @@ const App = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
             {[
-              { icon: <Search/>, title: "조건 선택", desc: "지역, 시간, 직군, 근무형태 선택" },
-              { icon: <Building2/>, title: "공고 확인", desc: "검증된 센터 정보 탐색" },
-              { icon: <CheckCircle2/>, title: "바로 지원", desc: "프로필 하나로 지원 끝" },
-              { icon: <MessageSquare/>, title: "채팅 연결", desc: "센터장과 직접 소통" }
+              { icon: <Search />, title: "조건 선택", desc: "지역, 시간, 직군, 근무형태 선택" },
+              { icon: <Building2 />, title: "공고 확인", desc: "검증된 센터 정보 탐색" },
+              { icon: <CheckCircle2 />, title: "바로 지원", desc: "프로필 하나로 지원 끝" },
+              { icon: <MessageSquare />, title: "채팅 연결", desc: "센터장과 직접 소통" }
             ].map((step, idx) => (
               <div key={idx} className="relative z-10 text-center p-6">
                 <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4 border border-white/20">
@@ -245,28 +245,28 @@ const App = () => {
               센터 전용 기능
             </div>
             <h2 className="text-3xl font-bold mb-6 tracking-tight">
-              공고등록, <br/> 
+              공고등록, <br />
               <span style={{ color: '#5C5FED' }}>AI자동채우기로 등록해보세요!</span>
             </h2>
             <ul className="space-y-4">
               <li className="flex gap-3 items-center text-slate-600 font-medium">
                 <Zap className="w-5 h-5 text-yellow-500 fill-yellow-500" />
-                복잡한 양식 없는 스마트 공고 시스템
+                복잡한 입력 없이 완성되는 스마트 공고
               </li>
               <li className="flex gap-3 items-center text-slate-600 font-medium">
                 <Users className="w-5 h-5" style={{ color: '#5C5FED' }} />
-                적합한 강사 추천 알고리즘 제공
+                간편하게 공고를 등록하고 바로 모집하세요
               </li>
               <li className="flex gap-3 items-center text-slate-600 font-medium">
                 <Clock className="w-5 h-5 text-emerald-500" />
-                지원 알림으로 놓치지 않는 인재 영입
+                지원 알림으로 놓치지 않고 확인하세요
               </li>
             </ul>
           </div>
           <div className="bg-slate-100 rounded-[2.5rem] p-8 aspect-square flex items-center justify-center relative">
-            <img 
-              src={Section6Image} 
-              alt="공고 등록 프로세스" 
+            <img
+              src={Section6Image}
+              alt="공고 등록 프로세스"
               className="w-full h-auto rounded-2xl shadow-2xl relative z-10"
             />
             {/* Decoration */}
@@ -277,7 +277,7 @@ const App = () => {
 
       {/* 7. Final CTA - App Coming Soon */}
       <section className="py-24 px-6">
-        <div 
+        <div
           className="max-w-4xl mx-auto rounded-[3rem] p-8 md:p-16 text-center text-white relative overflow-hidden shadow-2xl"
           style={{ backgroundColor: '#5C5FED' }}
         >
@@ -287,23 +287,23 @@ const App = () => {
 
           <div className="relative z-10">
             <h2 className="text-3xl md:text-5xl font-extrabold mb-6 leading-tight break-keep">
-              핏잡 앱, 곧 출시됩니다<br/>
+              핏잡 앱, 곧 출시됩니다<br />
               <span className="text-blue-200">더 빠르고 간편한 매칭을 준비 중이에요</span>
             </h2>
             <p className="text-lg md:text-xl text-blue-100 mb-12 opacity-90 max-w-2xl mx-auto break-keep">
-              센터와 강사를 연결하는 모든 과정을<br className="md:hidden"/> 이제 앱 하나로 해결하세요.
+              센터와 강사를 연결하는 모든 과정을<br className="md:hidden" /> 이제 앱 하나로 해결하세요.
             </p>
-            
+
             <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-6 md:p-8 inline-block w-full max-w-xl border border-white/20">
-              <p className="text-xl font-bold mb-6 break-keep">앱 출시를 준비 중입니다<br/>조금만 기다려주세요 🙌</p>
+              <p className="text-xl font-bold mb-6 break-keep">앱 출시를 준비 중입니다<br />조금만 기다려주세요 🙌</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button 
+                <button
                   onClick={handleComingSoon}
                   className="flex-1 px-4 py-4 bg-white text-slate-900 rounded-2xl font-bold text-base md:text-lg hover:bg-slate-50 transition-all flex items-center justify-center gap-2 shadow-lg whitespace-nowrap"
                 >
                   <span className="text-xl md:text-2xl">🍎</span> iOS 출시 예정
                 </button>
-                <button 
+                <button
                   onClick={handleComingSoon}
                   className="flex-1 px-4 py-4 bg-slate-900 text-white rounded-2xl font-bold text-base md:text-lg hover:bg-slate-800 transition-all flex items-center justify-center gap-2 shadow-lg whitespace-nowrap"
                 >
@@ -320,7 +320,7 @@ const App = () => {
         <div className="max-w-4xl mx-auto flex flex-col items-center gap-6">
           <Logo className="opacity-80 grayscale" />
           <p className="text-slate-400 text-sm text-center">
-            &copy; 2026 핏잡. All rights reserved.<br/>
+            &copy; 2026 핏잡. All rights reserved.<br />
             운동 업계 채용 문화를 혁신하는 피트니스 잡 매칭 서비스
           </p>
         </div>
